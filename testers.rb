@@ -2,7 +2,7 @@ require 'sequel'
 require 'sinatra'
 require 'pg'
 
-DB = Sequel.postgres('testers')
+DB = Sequel.postgres('testerdb')
 
 load File.dirname(__FILE__) + '/schema.rb'
 load File.dirname(__FILE__) + '/models.rb'
