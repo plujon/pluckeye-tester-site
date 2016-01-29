@@ -10,6 +10,17 @@ if 'production' === ENV['RACK_ENV']
   set :logging, false
 end
 
+# https://groups.google.com/forum/#!topic/sequel-talk/kh-MX2IoZwg
+if defined?(PhusionPassenger)
+  PhusionPassenger.on_event(:starting_worker_process) do |forked|
+    if forked
+      Sequel::DATABASES.each { |db| db.disconnect }
+    else
+      # We're in direct spawning mode. We don't need to do anything.
+    end
+  end
+end
+
 run Sinatra::Application
 
 # Local Variables:
