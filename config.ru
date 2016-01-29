@@ -5,13 +5,10 @@ require 'sinatra'
 require 'logger'
 require File.expand_path '../testers.rb', __FILE__
 
-# Apache logs for us.
-if 'production' === ENV['RACK_ENV']
-  set :logging, false
-end
-
 # https://groups.google.com/forum/#!topic/sequel-talk/kh-MX2IoZwg
 if defined?(PhusionPassenger)
+  # Apache logs for us.
+  set :logging, false
   PhusionPassenger.on_event(:starting_worker_process) do |forked|
     if forked
       Sequel::DATABASES.each { |db| db.disconnect }
