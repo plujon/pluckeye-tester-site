@@ -5,6 +5,10 @@ function addUser(name) {
             .attr("selected", true)
             .text(name));
 }
+function setDefaults() {
+  $('select[name=browser] option[value=firefox]').prop('selected', true);
+  $('select[name=system] option[value="' + osvx_friendly() + '"]').prop('selected', true);
+}
 $(function() {
   $('select').addClass("form-control");
   $('textarea').addClass("form-control");
@@ -12,4 +16,5 @@ $(function() {
   $('#save-user-button').on('click', function () {
     addUser($("#new-user-name").val());
   });
+  setDefaults();
 });
