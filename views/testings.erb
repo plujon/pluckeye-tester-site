@@ -1,0 +1,25 @@
+<div class="panel panel-default">
+  <div class="panel-heading">Testings</div>
+  <table>
+    <tr>
+      <th>User</th>
+      <th>Release</th>
+      <th>System</th>
+      <th>Browser</th>
+      <th>Ok</th>
+      <th>Created at</th>
+      <th>Notes</th>
+    </tr>
+    <% Testing.all.each do |x| %>
+      <tr>
+        <td><%= x.user %></td>
+        <td><%= x.release %></td>
+        <td><%= x.system %></td>
+        <td><%= x.browser %></td>
+        <td><%= x.ok %></td>
+        <td><%= x.created_at %></td>
+        <td><%= x.notes %></td>
+      </tr>
+    <% end %>
+  </table>
+</div>

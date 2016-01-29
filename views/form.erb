@@ -1,0 +1,83 @@
+<form action="/testings" method="post">
+  <div class="form-group">
+    <label>
+      I,
+      <select name="user" id="new-user-select">
+        <% User.all.each do |x| %>
+          <option value="<%= x.name %>"><%= x.name %></option>
+        <% end %>
+      </select>
+      (or
+      <button id="new-user-button" class="btn btn-default btn-sm" type="button" data-toggle="modal" data-target="#new-user-modal">
+        + add new user
+      </button>
+      )
+    </label>
+  </div>
+  <div class="form-group">
+    <label>
+      did
+      <select id="madlib">
+        <option>saucily</option>
+        <option>surreptitiously</option>
+        <option>singsongishly</option>
+        <option>sleepily</option>
+        <option>sluggishly</option>
+        <option selected="selected">solemnly</option>
+        <option>steadily</option>
+      </select>
+    </label>
+  </div>
+  <div class="form-group">
+    <label>
+      test Pluckeye version
+      <select name="release">
+        <% Release.all.each do |x| %>
+          <option value="<%= x.name %>"><%= x.name %></option>
+        <% end %>
+      </select>
+    </label>
+  </div>
+  <div class="form-group">
+    <label>
+      on
+      <select name="system">
+        <% System.all.each do |x| %>
+          <option value="<%= x.name %>"><%= x.name %></option>
+        <% end %>
+      </select>
+    </label>
+  </div>
+  <div class="form-group">
+    <label>
+      using
+      <select name="browser">
+        <% Browser.all.each do |x| %>
+          <option value="<%= x.name %>"><%= x.name %></option>
+        <% end %>
+      </select>
+    </label>
+  </div>
+  <div class="form-group">
+    <div class="radio">
+      <label>
+        <input type="radio" name="ok" value="ok">
+        and there were no problems :-)
+      </label>
+    </div>
+    <div class="radio">
+      <label>
+        <input type="radio" name="ok" value="no">
+        and  <big><strong>there were problems !!</strong></big>
+      </label>
+    </div>
+  </div>
+  <div class="form-group">
+    <label>
+      Additional notes
+      <textarea name="notes" title="Additional notes" cols="30" rows="4"></textarea>
+    </label>
+  </div>
+  <input type="submit" class="btn btn-default btn-primary" value="Send">
+</form>
+<%= erb :_new_user_modal %>
