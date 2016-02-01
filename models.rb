@@ -9,6 +9,9 @@ class Testing < Sequel::Model
   many_to_one :user
   many_to_one :release
   many_to_one :system
+  def date
+    created_at.strftime("%Y-%m-%d")
+  end
 end
 
 class Release < Sequel::Model

@@ -2,22 +2,22 @@
   <div class="panel-heading">Testings</div>
   <table>
     <tr>
-      <th>User</th>
+      <th>Date</th>
       <th>Release</th>
       <th>System</th>
       <th>Browsers</th>
       <th>Ok</th>
-      <th>Created at</th>
+      <th>User</th>
       <th>Notes</th>
     </tr>
     <% Testing.all.each do |x| %>
       <tr>
-        <td><%= x.user %></td>
+        <td><%= x.date %></td>
         <td><%= x.release %></td>
         <td><%= x.system %></td>
         <td><%= x.browsers.join(" ") %></td>
         <td><%= x.ok %></td>
-        <td><%= x.created_at %></td>
+        <td><%= x.user %></td>
         <td><%= x.notes %></td>
       </tr>
     <% end %>
