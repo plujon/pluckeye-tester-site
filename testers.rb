@@ -22,18 +22,18 @@ end
 
 post '/testings' do
   # Only 1 testing per user/release/system/browser
-  user = User.find_or_create(:name => params[:user])
-  release = Release.find_or_create(:name => params[:release])
-  system = System.find_or_create(:name => params[:system])
-  browser = Browser.find_or_create(:name => params[:browser])
+  user = User.find_or_create(:name => params[:user].to_s)
+  release = Release.find_or_create(:name => params[:release].to_s)
+  system = System.find_or_create(:name => params[:system].to_s)
+  browser = Browser.find_or_create(:name => params[:browser].to_s)
   opts = { :user_id => user.id,
            :release_id => release.id,
            :system_id => system.id,
            :browser_id => browser.id }
   testing = Testing.find(opts)
   opts[:ok] = params[:ok] === "ok" ? true : false
-  opts[:ipaddress] = request.ip
-  opts[:notes] = params[:notes]
+  opts[:ipaddress] = request.ip.to_s
+  opts[:notes] = params[:notes].to_s
   opts[:created_at] = Time.now
   if testing
     testing.update(opts)
