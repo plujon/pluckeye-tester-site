@@ -1,6 +1,6 @@
+require 'pg'
 require 'sequel'
 require 'sinatra'
-require 'pg'
 
 DB = Sequel.postgres('testerdb')
 DB.extension :pg_array
