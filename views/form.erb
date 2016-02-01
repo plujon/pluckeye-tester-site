@@ -51,7 +51,7 @@
   <div class="form-group">
     <label>
       using
-      <select name="browser">
+      <select name="browsers[]" multiple="multiple">
         <% Browser.all.each do |x| %>
           <option value="<%= x.name %>"><%= x.name %></option>
         <% end %>

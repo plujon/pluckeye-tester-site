@@ -29,11 +29,9 @@ DB.create_table? :testings do
   foreign_key :user_id, :users
   foreign_key :release_id, :releases
   foreign_key :system_id, :systems
-  foreign_key :browser_id, :browsers
+  column :browsers, 'text[]'
   boolean :ok
   String :ipaddress
   String :notes
   DateTime :created_at
 end
-
-

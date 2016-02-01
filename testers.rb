@@ -3,6 +3,7 @@ require 'sinatra'
 require 'pg'
 
 DB = Sequel.postgres('testerdb')
+DB.extension :pg_array
 
 load File.dirname(__FILE__) + '/schema.rb'
 load File.dirname(__FILE__) + '/models.rb'
@@ -21,16 +22,18 @@ get '/testings' do
 end
 
 post '/testings' do
-  # Only 1 testing per user/release/system/browser
+  # Only 1 testing per user/release/system
   user = User.find_or_create(:name => params[:user].to_s)
   release = Release.find_or_create(:name => params[:release].to_s)
   system = System.find_or_create(:name => params[:system].to_s)
-  browser = Browser.find_or_create(:name => params[:browser].to_s)
   opts = { :user_id => user.id,
            :release_id => release.id,
-           :system_id => system.id,
-           :browser_id => browser.id }
+           :system_id => system.id }
   testing = Testing.find(opts)
+  browsers = params[:browsers].map {
+    |x| Browser.find_or_create(:name => x.to_s).to_s
+  }
+  opts[:browsers] = Sequel.pg_array(browsers)
   opts[:ok] = params[:ok] === "ok" ? true : false
   opts[:ipaddress] = request.ip.to_s
   opts[:notes] = params[:notes].to_s

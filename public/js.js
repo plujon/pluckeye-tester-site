@@ -6,7 +6,7 @@ function addUser(name) {
             .text(name));
 }
 function setDefaults() {
-  $('select[name=browser] option[value=firefox]').prop('selected', true);
+  $('select[name="browsers[]"] option[value=firefox]').prop('selected', true);
   $('select[name=system] option[value="' + osvx_friendly() + '"]').prop('selected', true);
 }
 $(function() {
