@@ -30,7 +30,7 @@ DB.create_table? :testings do
   foreign_key :release_id, :releases
   foreign_key :system_id, :systems
   column :browsers, 'text[]'
-  boolean :ok
+  TrueClass :ok
   String :ipaddress
   String :notes
   DateTime :created_at
