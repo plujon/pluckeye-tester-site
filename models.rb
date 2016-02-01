@@ -1,7 +1,14 @@
 ### Models
 
-class User < Sequel::Model
-  one_to_many :testings
+class Browser < Sequel::Model
+  def to_s; name end
+end
+
+class Release < Sequel::Model
+  def to_s; name end
+end
+
+class System < Sequel::Model
   def to_s; name end
 end
 
@@ -14,14 +21,7 @@ class Testing < Sequel::Model
   end
 end
 
-class Release < Sequel::Model
-  def to_s; name end
-end
-
-class System < Sequel::Model
-  def to_s; name end
-end
-
-class Browser < Sequel::Model
+class User < Sequel::Model
+  one_to_many :testings
   def to_s; name end
 end
