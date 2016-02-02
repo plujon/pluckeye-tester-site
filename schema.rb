@@ -1,6 +1,6 @@
 ### Schema
 
-#[:testings, :users, :systems, :releases, :browsers].each do |x|
+#[:bonuses, :browsers, :releases, :systems, :testings, :users].each do |x|
 #  DB.drop_table? x
 #end
 
