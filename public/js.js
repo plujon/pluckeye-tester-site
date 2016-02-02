@@ -34,14 +34,18 @@ function initNavbar() {
     }
   });
 }
-$(function() {
+function initBootstrap() {
   $('select').addClass("form-control");
   $('textarea').addClass("form-control");
   $('table').addClass("table table-striped");
+  $('ul[class="list-group"] li').addClass("list-group-item");
+}
+$(function() {
   $('#save-user-button').on('click', function () {
     addUser($("#new-user-name").val());
   });
   setDefaults();
-  addChosen();
+  initBootstrap();
   initNavbar();
+  addChosen();
 });
