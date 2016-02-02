@@ -98,6 +98,20 @@ get '/bonuses' do
   erb :bonuses
 end
 
+get '/bonuses/new' do
+  erb :new_bonus
+end
+
+post '/bonuses' do
+  admin_only!
+  user = User.find(:name => params[:user].to_s)
+  bonus = Bonus.create(:user_id => user.id,
+                       :points => params[:points].to_i,
+                       :notes => params[:notes].to_s,
+                       :created_at => DateTime.now)
+  redirect to("/bonuses?highlight=#{bonus.id}")
+end
+
 get '/scores' do
   @users = User.all.sort { |a,b| b.points <=> a.points }
   erb :scores

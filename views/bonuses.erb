@@ -10,10 +10,10 @@
       <th>Notes</th>
     </tr>
     <% @bonuses.each do |x| %>
-      <tr>
+      <tr class="<%= ((x.id == params[:highlight].to_i) ? 'alert alert-success' : '') %>">
         <td><%= x.date %></td>
         <td><%= x.points %></td>
-        <td><%= x.user %></td>
+        <td><%= link_to(x.user) %></td>
         <td><%= x.notes %></td>
       </tr>
     <% end %>
