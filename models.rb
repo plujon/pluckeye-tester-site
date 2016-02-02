@@ -1,8 +1,14 @@
 ### Models
 
+module CreatedAt
+  def date
+    created_at ? created_at.strftime("%Y-%m-%d") : ""
+  end
+end
+
 class Bonus < Sequel::Model
   many_to_one :user
-  def date; created_at.strftime("%y-%m-%d") end
+  include CreatedAt
   def to_s; "+" + points.to_s + " " + user.to_s + " : " + notes end
 end
 
@@ -20,9 +26,7 @@ end
 
 class Testing < Sequel::Model
   many_to_one :user
-  def date
-    created_at.strftime("%Y-%m-%d")
-  end
+  include CreatedAt
 end
 
 class User < Sequel::Model
