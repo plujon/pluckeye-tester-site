@@ -26,6 +26,14 @@ function addChosen() {
     }
   });
 }
+function initNavbar() {
+  var navbarItems = $("#navbar-body li");
+  navbarItems.each(function (index, element) {
+    if ($(this).find("a").attr("href") === window.location.pathname) {
+      $(this).addClass("active");
+    }
+  });
+}
 $(function() {
   $('select').addClass("form-control");
   $('textarea').addClass("form-control");
@@ -35,4 +43,5 @@ $(function() {
   });
   setDefaults();
   addChosen();
+  initNavbar();
 });
