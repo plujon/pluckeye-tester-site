@@ -4,6 +4,7 @@ require 'sinatra'
 
 DB = Sequel.postgres('testerdb')
 DB.extension :pg_array
+Sequel.extension :pg_array_ops
 
 load File.dirname(__FILE__) + '/schema.rb'
 load File.dirname(__FILE__) + '/models.rb'
@@ -18,6 +19,21 @@ get '/testings/new' do
 end
 
 get '/testings' do
+  @testings = Testing
+  if params[:user] && user = User.find(:name => params[:user].to_s)
+    @testings = @testings.where(:user_id => user.id)
+  end
+  if params[:release] && release = params[:release].to_s
+    @testings = @testings.where(:release => release)
+  end
+  if params[:system] && system = params[:system].to_s
+    @testings = @testings.where(:system => system)
+  end
+  if params[:browsers] && browsers = params[:browsers].sort
+    aop = Sequel.pg_array_op(:browsers)
+    @testings = @testings.where(aop.overlaps(Sequel.pg_array(browsers)))
+  end
+  @testings = @testings.all
   erb :testings
 end
 
@@ -43,7 +59,7 @@ post '/testings' do
   else
     Testing.create(opts)
   end
-  erb :thank_you
+  redirect to("/testings?thankyou=yes&user=#{user}")
 end
 
 get '/sand' do
