@@ -27,8 +27,8 @@ end
 DB.create_table? :testings do
   primary_key :id
   foreign_key :user_id, :users, :index => true
-  foreign_key :release_id, :releases, :index => true
-  foreign_key :system_id, :systems, :index => true
+  String :release, :index => true
+  String :system, :index => true
   column :browsers, 'text[]'
   TrueClass :ok
   String :ipaddress

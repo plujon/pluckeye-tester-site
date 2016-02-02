@@ -24,11 +24,11 @@ end
 post '/testings' do
   # Only 1 testing per user/release/system
   user = User.find_or_create(:name => params[:user].to_s)
-  release = Release.find_or_create(:name => params[:release].to_s)
-  system = System.find_or_create(:name => params[:system].to_s)
+  release = Release.find_or_create(:name => params[:release].to_s).to_s
+  system = System.find_or_create(:name => params[:system].to_s).to_s
   opts = { :user_id => user.id,
-           :release_id => release.id,
-           :system_id => system.id }
+           :release => release,
+           :system => system }
   testing = Testing.find(opts)
   browsers = params[:browsers].map {
     |x| Browser.find_or_create(:name => x.to_s).to_s
