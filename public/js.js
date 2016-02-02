@@ -27,6 +27,7 @@ function addChosen() {
   });
 }
 $(function() {
+  $('select').addClass("form-control");
   $('textarea').addClass("form-control");
   $('table').addClass("table");
   $('#save-user-button').on('click', function () {
