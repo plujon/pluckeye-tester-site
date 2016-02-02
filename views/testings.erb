@@ -18,7 +18,7 @@
         <td><%= x.system %></td>
         <td><%= x.browsers.join(" ") %></td>
         <td><%= x.ok %></td>
-        <td><%= x.user %></td>
+        <td><%= link_to(x.user) %></td>
         <td><%= x.notes %></td>
       </tr>
     <% end %>

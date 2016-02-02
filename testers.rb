@@ -13,6 +13,7 @@ end
 load File.dirname(__FILE__) + '/schema.rb'
 load File.dirname(__FILE__) + '/models.rb'
 load File.dirname(__FILE__) + '/seeds.rb'
+load File.dirname(__FILE__) + '/helpers.rb'
 
 get '/' do
   redirect to('/testings/new')
@@ -24,8 +25,13 @@ end
 
 get '/testings' do
   @testings = Testing
-  if params[:user] && user = User.find(:name => params[:user].to_s)
-    @testings = @testings.where(:user_id => user.id)
+  if params[:user]
+    user_id = params[:user].to_i
+    if 0 == user_id
+      user = User.find(:name => params[:user].to_s)
+      user_id = user.id if user
+    end
+    @testings = @testings.where(:user_id => user_id)
   end
   if params[:release] && release = params[:release].to_s
     @testings = @testings.where(:release => release)
