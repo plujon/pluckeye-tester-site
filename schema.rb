@@ -24,6 +24,14 @@ DB.create_table? :users do
   String :name, :unique => true
 end
 
+DB.create_table? :bonuses do
+  primary_key :id
+  foreign_key :user_id, :users, :index => true
+  Integer :points
+  String :notes
+  DateTime :created_at
+end
+
 DB.create_table? :testings do
   primary_key :id
   foreign_key :user_id, :users, :index => true

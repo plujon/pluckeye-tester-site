@@ -1,0 +1,21 @@
+<div class="page-header">
+  <h1>Bonuses</h1>
+</div>
+<div class="row">
+  <table>
+    <tr>
+      <th>Date</th>
+      <th>Points</th>
+      <th>User</th>
+      <th>Notes</th>
+    </tr>
+    <% @bonuses.each do |x| %>
+      <tr>
+        <td><%= x.date %></td>
+        <td><%= x.points %></td>
+        <td><%= x.user %></td>
+        <td><%= x.notes %></td>
+      </tr>
+    <% end %>
+  </table>
+</div>
