@@ -48,7 +48,7 @@ post '/testings' do
   testing = Testing.find(opts)
   browsers = params[:browsers].map {
     |x| Browser.find_or_create(:name => x.to_s).to_s
-  }
+  }.sort
   opts[:browsers] = Sequel.pg_array(browsers)
   opts[:ok] = params[:ok] === "ok" ? true : false
   opts[:ipaddress] = request.ip.to_s
