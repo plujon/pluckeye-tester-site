@@ -72,7 +72,7 @@ post '/testings' do
   redirect to("/testings?thankyou=yes&user=#{user}&highlight=#{testing.id}")
 end
 
-get '/user/:id' do
+get '/users/:id' do
   user_id = params[:id].to_i
   if 0 == user_id
     opts = { :name => params[:id].to_s }

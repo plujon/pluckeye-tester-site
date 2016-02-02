@@ -14,7 +14,7 @@ helpers do
   def link_to(o)
     case o
     when User
-      "<a href=\"/user/#{o.id}\">#{o}</a>"
+      "<a href=\"/users/#{o.id}\">#{o}</a>"
     else
       "#{o}"
     end
