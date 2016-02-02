@@ -17,7 +17,7 @@
     </thead>
     <tbody>
     <% @testings.each do |x| %>
-      <tr>
+      <tr class="<%= ((x.id == params[:highlight].to_i) ? 'alert alert-success' : '') %>">
         <td><%= x.date %></td>
         <td><%= x.release %></td>
         <td><%= x.system %></td>

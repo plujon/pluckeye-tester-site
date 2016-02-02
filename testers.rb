@@ -67,9 +67,9 @@ post '/testings' do
   if testing
     testing.update(opts)
   else
-    Testing.create(opts)
+    testing = Testing.create(opts)
   end
-  redirect to("/testings?thankyou=yes&user=#{user}")
+  redirect to("/testings?thankyou=yes&user=#{user}&highlight=#{testing.id}")
 end
 
 get '/user/:id' do
