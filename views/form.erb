@@ -5,7 +5,7 @@
   <div class="form-group">
     <label>
       I,
-      <select name="user" id="new-user-select">
+      <select name="user" id="user-select">
         <% User.all.each do |x| %>
           <option value="<%= x.name %>"><%= x.name %></option>
         <% end %>

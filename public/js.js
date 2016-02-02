@@ -1,12 +1,12 @@
 function addUser(name) {
-  var newUserSelect = $('#new-user-select');
-  newUserSelect
+  var userSelect = $('#user-select');
+  userSelect
     .append($("<option></option>")
             .attr("value", name)
             .attr("selected", true)
             .text(name));
-  if (typeof newUserSelect.chosen !== 'undefined') {
-    newUserSelect.trigger("chosen:updated");
+  if (typeof userSelect.chosen !== 'undefined') {
+    userSelect.trigger("chosen:updated");
   }
 }
 function setDefaults() {
