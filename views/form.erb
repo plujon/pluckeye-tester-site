@@ -24,7 +24,10 @@
     <label>
       tested Pluckeye version
       <select name="release">
-        <% Release.all.each do |x| %>
+        <% if params[:release] %>
+          <option value="<%= params[:release] %>" selected="selected"><%= params[:release] %></option>
+        <% end %>
+        <% Release.all.sort { |a,b| b.to_s <=> a.to_s }.each do |x| %>
           <option value="<%= x.name %>"><%= x.name %></option>
         <% end %>
       </select>
