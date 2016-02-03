@@ -7,21 +7,25 @@
 DB.create_table? :browsers do
   primary_key :id
   String :name, :unique => true
+  constraint(:name_length_range){char_length(name) > 2}
 end
 
 DB.create_table? :releases do
   primary_key :id
   String :name, :unique => true
+  constraint(:name_length_range){char_length(name) > 2}
 end
 
 DB.create_table? :systems do
   primary_key :id
   String :name, :unique => true
+  constraint(:name_length_range){char_length(name) > 2}
 end
 
 DB.create_table? :users do
   primary_key :id
   String :name, :unique => true
+  constraint(:name_length_range){char_length(name) > 2}
 end
 
 DB.create_table? :bonuses do
