@@ -6,6 +6,9 @@
     <label>
       I,
       <select name="user" id="user-select">
+      <% if params[:username] %>
+         <option value="<%= params[:username] %>" selected="selected"><%= params[:username] %></option>
+      <% end %>
         <% User.all.each do |x| %>
           <option value="<%= x.name %>"><%= x.name %></option>
         <% end %>
