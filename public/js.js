@@ -12,6 +12,13 @@ function addUser(name) {
 function setDefaults() {
   $('select[name="browsers[]"] option[value=firefox]').prop('selected', true);
   $('select[name=system] option[value="' + osvx_friendly() + '"]').prop('selected', true);
+  var match = document.cookie.match(/username=([^;]+)/);
+  if (match) {
+    $('select[name="user"] option[value="' + match[1] + '"]').prop('selected', true);
+  }
+}
+function setDefaultUser(username) {
+  document.cookie = "username=" + username + "; max-age=" + 3600 * 365 +"; path=/";
 }
 function addChosen() {
   var chosenOptions = { search_contains: true };
@@ -43,6 +50,9 @@ function initBootstrap() {
 $(function() {
   $('#save-user-button').on('click', function () {
     addUser($("#new-user-name").val());
+  });
+  $('#testings-form').on('submit', function () {
+    setDefaultUser($('#user-select').val());
   });
   setDefaults();
   initBootstrap();
