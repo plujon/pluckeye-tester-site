@@ -8,6 +8,7 @@
         <tr>
           <th></th><% i = 0 %>
           <th>User</th>
+          <th>Rank</th>
           <th>Score</th>
         </tr>
       </thead>
@@ -15,7 +16,8 @@
         <% @users.each do |x| %>
           <tr>
             <td><%= i += 1 %></td>
-            <td><%= x %></td>
+            <td><%= link_to(x) %></td>
+            <td><%= rank(x.points) %></td>
             <td><%= x.points %></td>
           </tr>
         <% end %>
