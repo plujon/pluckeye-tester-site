@@ -7,7 +7,7 @@
 DB.create_table? :browsers do
   primary_key :id
   String :name, :unique => true
-  constraint(:name_length_range){char_length(name) > 2}
+  constraint(:name_length_range){char_length(name) > 1}
 end
 
 DB.create_table? :releases do
