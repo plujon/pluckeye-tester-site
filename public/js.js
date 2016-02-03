@@ -47,6 +47,19 @@ function initBootstrap() {
   $('table').addClass("table table-striped");
   $('ul[class="list-group"] li').addClass("list-group-item");
 }
+function initOptionalNotes() {
+  if ($('#ok-radio').attr('checked')) {
+    $('#additional-notes-div').hide();
+  } else {
+    $('#additional-notes-div').show();
+  }
+  $('#ok-radio').on('change', function () {
+    $('#additional-notes-div').hide(600);
+  });
+  $('#no-radio').on('change', function () {
+    $('#additional-notes-div').show(600);
+  });
+}
 $(function() {
   $('#save-user-button').on('click', function () {
     addUser($("#new-user-name").val());
@@ -57,5 +70,6 @@ $(function() {
   setDefaults();
   initBootstrap();
   initNavbar();
+  initOptionalNotes();
   addChosen();
 });
