@@ -27,27 +27,53 @@ helpers do
   end
 
   def rank(points)
-    [:centaur,
-     :ogre,
-     :gargoyle,
-     :lion,
-     :troll,
-     :cyclops,
-     :ranger,
-     :gorgon,
-     :minitaur,
-     :warbear,
-     :behemoth,
-     :unicorn,
-     :wyvern,
-     :griphon,
-     :giant,
-     :dragon,
-     :hydra,
-     :serpent,
-     :colossus,
-     :titan
-    ][level(points)]
+    ary =
+      [
+       :wheat,
+       :flour,
+       :bread,
+       :slice_of_bread,
+       :toast,
+       :onion,
+       :turkey,
+       :sandwich,
+       :saliva,
+       :chew,
+       :enzyme,
+       :bolus,
+       :pharynx,
+       :epiglottis,
+       :esophagus,
+       :peristalsis,
+       :stomach,
+       :hydrocloric_acid,
+       :bile,
+       :intestines
+      ]
+    ary =
+      [
+       :centaur,
+       :ogre,
+       :gargoyle,
+       :lion,
+       :troll,
+       :cyclops,
+       :ranger,
+       :gorgon,
+       :minitaur,
+       :warbear,
+       :behemoth,
+       :unicorn,
+       :wyvern,
+       :griphon,
+       :giant,
+       :dragon,
+       :hydra,
+       :serpent,
+       :colossus,
+       :titan
+      ]
+    ary[level(points)]
   end
 
   def link_to(o)
