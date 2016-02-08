@@ -65,6 +65,17 @@ post '/testings' do
   redirect to("/testings?thankyou=yes&user=#{user}&highlight=#{testing.id}")
 end
 
+post '/releases' do
+  name = params[:name]
+  if !name.match(/^\d+\.\d+\.\d+\z/)
+    halt 400, "Bad parameter"
+  end
+  if !release = Release.find_or_create(:name => name)
+    halt 500, "Failed to create release"
+  end
+  "created #{release}"
+end
+
 get '/users/:id' do
   user_id = params[:id].to_i
   if 0 == user_id
