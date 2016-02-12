@@ -3,7 +3,7 @@
 </div>
 <form id="testings-form" action="/testings" method="post">
   <div class="form-group">
-    <label>
+    <label data-toggle="tooltip" data-placement="right" title="Click add new user if this is your first time testing.">
       I,
       <select name="user" id="user-select">
       <% if params[:username] %>
@@ -21,7 +21,7 @@
     </label>
   </div>
   <div class="form-group">
-    <label>
+    <label data-toggle="tooltip" data-placement="right" title="What is the version?  The version is a numeric x.y.z value, and it is visible in multiple places: on the button where Pluckeye is downloaded, in the name of the downloaded file, on the Pluckeye settings page, and also as the output of `pluck version`.">
       tested Pluckeye version
       <select name="release">
         <% if params[:release] %>
@@ -34,7 +34,7 @@
     </label>
   </div>
   <div class="form-group">
-    <label>
+    <label data-toggle="tooltip" data-placement="right" title="What is the operating system?  This page attempts to guess your operating system based on information available in the browser you are using.  It usually guesses correctly, but it may not always.  If this value looks wrong to you, use the contact link to report it, and if possible choose whatever is more accurate.">
       on
       <select name="system">
         <% System.all.each do |x| %>
@@ -44,7 +44,7 @@
     </label>
   </div>
   <div class="form-group">
-    <label>
+    <label data-toggle="tooltip" data-placement="right" title="Select all browsers that you used while testing Pluckeye.  At installation level 1, Pluckeye should only affect Firefox (or Iceweasel).  If you don't know what installation levels you tested, you only tested level 1.  If a browser you tested is not listed, please use the contact link to report it.">
       using
       <select name="browsers[]" multiple="multiple">
         <% Browser.all.each do |x| %>
@@ -55,13 +55,13 @@
   </div>
   <div class="form-group">
     <div class="radio">
-      <label>
+      <label data-toggle="tooltip" data-placement="right" title="Choose this if Pluckeye behaved flawlessly as far as you could tell.">
         <input id="ok-radio" type="radio" name="ok" value="ok" checked="checked">
         and there were no problems :-)
       </label>
     </div>
     <div class="radio">
-      <label>
+      <label data-toggle="tooltip" data-placement="right" title="Choose this if you think you encountered a bug or problem in your testing.">
         <input id="no-radio" type="radio" name="ok" value="no">
         and  <big><strong>there were problems !!</strong></big>
       </label>

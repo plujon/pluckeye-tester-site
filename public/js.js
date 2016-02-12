@@ -46,6 +46,7 @@ function initBootstrap() {
   $('textarea').addClass("form-control");
   $('table').addClass("table table-striped");
   $('ul[class="list-group"] li').addClass("list-group-item");
+  $('[data-toggle="tooltip"]').tooltip({container:'body'});
 }
 function initOptionalNotes() {
   if ($('#ok-radio').attr('checked')) {
