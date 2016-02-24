@@ -103,6 +103,7 @@ get '/bonuses' do
 end
 
 get '/bonuses/new' do
+  admin_only!
   erb :new_bonus
 end
 
