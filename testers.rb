@@ -107,6 +107,18 @@ get '/bonuses' do
   erb :bonuses
 end
 
+delete '/bonuses/:id' do
+  admin_only!
+  @bonus = Bonus.find(:id => params[:id].to_i)
+  if !@bonus
+    halt 500, "Failed to find bonus"
+  end
+  if !@bonus.delete
+    halt 500, "Failed to delete @bonus"
+  end
+  "ok"
+end
+
 get '/bonuses/new' do
   admin_only!
   erb :new_bonus

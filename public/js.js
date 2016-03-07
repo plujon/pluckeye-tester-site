@@ -61,6 +61,23 @@ function initOptionalNotes() {
     $('#additional-notes-div').show(600);
   });
 }
+function initHttpVerbs() {
+  $(".http-delete").each(function (index, element) {
+    $(element).on("click", function(event) {
+      event.preventDefault();
+      var href = $(element).attr("href").replace("/delete", "");
+      $.ajax({url: href,
+              method: "DELETE",
+              error: function(jqxhr, textStatus, errorThrown) {
+                alert("Failed: " + textStatus);
+              },
+              success: function() {
+                window.location.reload(false);
+              }
+             });
+    });
+  });
+}
 $(function() {
   $('#save-user-button').on('click', function () {
     addUser($("#new-user-name").val());
@@ -72,5 +89,6 @@ $(function() {
   initBootstrap();
   initNavbar();
   initOptionalNotes();
+  initHttpVerbs();
   addChosen();
 });

@@ -12,6 +12,7 @@
       <th>Points</th>
       <th>User</th>
       <th>Notes</th>
+      <% if maybe_admin? %><th></th><% end %>
     </tr>
     <% @bonuses.each do |x| %>
       <tr class="<%= ((x.id == params[:highlight].to_i) ? 'alert alert-success' : '') %>">
@@ -19,6 +20,11 @@
         <td><%= x.points %></td>
         <td><%= link_to(x.user) %></td>
         <td><%= x.notes %></td>
+        <% if maybe_admin? %>
+          <td>
+            <a href="/bonuses/<%= x.id %>/delete" class="http-delete btn btn-danger btn-xs pull-right">delete</a>
+          </td>
+        <% end %>
       </tr>
     <% end %>
   </table>
