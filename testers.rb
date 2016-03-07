@@ -116,7 +116,7 @@ delete '/bonuses/:id' do
   if !@bonus.delete
     halt 500, "Failed to delete @bonus"
   end
-  "ok"
+  "Deleted bonus #{@bonus.id}"
 end
 
 get '/bonuses/new' do
