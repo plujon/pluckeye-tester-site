@@ -11,6 +11,14 @@ helpers do
     @auth.provided? and @auth.basic? and @auth.credentials and @auth.credentials == credentials
   end
 
+  def maybe_admin?
+    case request.cookies["username"]
+    when /Jon/ then true
+    when nil then true
+    else false
+    end
+  end
+
   def level(points)
     # incr = 0
     # 20.times.reduce([]) { |acc, x|
@@ -78,6 +86,10 @@ helpers do
 
   def checkmark(yn)
     '<span class="glyphicon glyphicon-' + (yn ? "ok" : "remove") + '"></span>'
+  end
+
+  def plus
+    '<span class="glyphicon glyphicon-plus"></span>'
   end
 
   def link_to(o)

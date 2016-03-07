@@ -1,5 +1,9 @@
 <div class="page-header">
-  <h1>Bonuses</h1>
+  <h1>Bonuses
+    <% if maybe_admin? %>
+      <a href="/bonuses/new" class="btn btn-default pull-right"><%= plus %> add bonus</a>
+    <% end %>
+</h1>
 </div>
 <div class="row">
   <table>
