@@ -76,6 +76,10 @@ helpers do
     ary[level(points)]
   end
 
+  def checkmark(yn)
+    '<span class="glyphicon glyphicon-' + (yn ? "ok" : "remove") + '"></span>'
+  end
+
   def link_to(o)
     case o
     when User
