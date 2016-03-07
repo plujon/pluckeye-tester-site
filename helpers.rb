@@ -60,7 +60,7 @@ helpers do
        :cyclops,
        :ranger,
        :gorgon,
-       :minitaur,
+       :minotaur,
        :warbear,
        :behemoth,
        :unicorn,
