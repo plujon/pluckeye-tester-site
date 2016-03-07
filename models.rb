@@ -27,6 +27,9 @@ end
 class Testing < Sequel::Model
   many_to_one :user
   include CreatedAt
+  def to_s
+    "#{user} tested #{release} on #{system} on #{date} with #{browsers} and ok is #{ok}. #{notes}"
+  end
 end
 
 class User < Sequel::Model

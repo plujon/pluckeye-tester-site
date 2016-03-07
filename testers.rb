@@ -62,6 +62,11 @@ post '/testings' do
   else
     testing = Testing.create(opts)
   end
+  if !opts[:ok]
+    File.open("/var/tmp/percolate-freeze.txt", "a") do |f|
+      f.puts testing.to_s
+    end
+  end
   redirect to("/testings?thankyou=yes&user=#{user}&highlight=#{testing.id}")
 end
 
